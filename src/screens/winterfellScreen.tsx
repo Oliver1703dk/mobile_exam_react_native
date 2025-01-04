@@ -18,12 +18,16 @@ const WinterfellScreen: React.FC = () => {
     getCharacters();
   }, []);
 
-  const onToggle = () => {};
+  const [selectedCharacterId, setSelectedCharacterId] = useState<number | undefined>(undefined);
+
+  const onToggle = (id: number) => {
+    setSelectedCharacterId(id);
+  };
 
   return (
     <View style={styles.container}>
       <GOTHeader/>
-      <GOTCharacterDetails />
+      <GOTCharacterDetails characterId={selectedCharacterId}/>
       <Text style={styles.screenTitle}>Characters</Text>
       <FlatList
         data={characters}
